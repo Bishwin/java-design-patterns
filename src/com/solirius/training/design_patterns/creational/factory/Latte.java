@@ -3,9 +3,20 @@ package com.solirius.training.design_patterns.creational.factory;
 public class Latte extends CoffeeDrink {
 
     private String name = "Latte";
-    private String coffee = "60ml";
-    private String water = MINIMUM_VOLUME;
-    private String milk = "300ml";
+    private int coffee = 60;
+    private int water = 0;
+    private int milk = 300;
+    private int size = 1;
+    private String options;
+
+    public Latte(int size, String options ){
+        this.size=size;
+        this.options = options;
+    }
+
+    public Latte(int size){
+        this.size=size;
+    }
 
     @Override
     public String getName() {
@@ -13,18 +24,22 @@ public class Latte extends CoffeeDrink {
     }
 
     @Override
-    public String getCoffee() {
-        return this.coffee;
+    public int getCoffee() {
+        return this.coffee*size;
     }
 
     @Override
-    public String getWater() {
-        return this.water;
+    public int getWater() {
+        return this.water*size;
     }
 
     @Override
-    public String getMilk() {
-        return this.milk;
+    public int getMilk() {
+        return this.milk*size;
     }
 
+    @Override
+    public String getOptions() {
+        return options;
+    }
 }
